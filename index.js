@@ -2,15 +2,12 @@ const express = require('express')
 
 const app = express();
 
-// Rora get de listagem de dentistas:
-app.get('/', (req, res)=>{
-    res.send('Resposta da rota raizs');
-})
+app.use(express.json());
 
-// Rora get de listagem de dentistas:
-app.get('/listagemDentistas', (req, res)=>{
-    res.send('Resposta de listagem de dentistas');
-})
+// Importação do arquivo de rotas de livros
+const livrosController = require('./controller/livrosController')
+
+app.use('/', livrosController)
 
 app.listen(3000, ()=>{
     console.log('APLICAÇÃO RODANDO EM - hhtp://localhost:3000');
